@@ -7,6 +7,26 @@ using namespace std;
 #define input(a,n) for(int i=0; i<n; i++){ cin>>a[i]; }
 #define print(a,n) for(int i=0; i<n; i++){ cout<<a[i]<<" , "; }
 #define loop(a,b) for(int i=a;i<b;i++)
+void findFreqOfStrings(){
+    int n;
+    cin>>n;
+    string s;
+    map<string, int> m;
+    for(int i=0;i<n;i++){
+        cin>>s;
+        auto it = m.find(s);
+        if(it == m.end()){
+            m[s]=1;
+        }else{
+            m[s]++;
+        }
+    }
+    for(auto &i:m){
+        cout<<i.first<<" "<<i.second<<endl;
+    }
+    
+}
+
 void solve(){
     /// declaring the map with key as integer, element as string
     map<int, string> m;
@@ -38,10 +58,6 @@ void solve(){
 }
 int main(){
     solve();
-    // int t;
-    // cin >> t;
-    // while(t--){
-    //     solve();
-    // }
+    findFreqOfStrings();
     return 0;
 }
