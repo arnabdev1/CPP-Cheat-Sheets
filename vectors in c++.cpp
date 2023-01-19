@@ -53,6 +53,13 @@ int main()
 //    data.insert(data.begin(), 2, 7);
 //    data.insert(data.begin() + 1, 2, 7);
 //    print(data);
+    
+    
+    
+     /// sorting a vector
+//     vector <int> v = {1,2,3};
+//     sort(v.begin(), v.end());
+//     sort(v.begin(), v.end(), greater<int>());
 
     
     
