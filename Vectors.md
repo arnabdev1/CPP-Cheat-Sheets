@@ -46,7 +46,7 @@ void print(vector<int> data){
 ```
 
 
-```
+
 ## Inserting elements, updating elements, indices and pointing to elements(.begin(), .end(), .insert())
 ```c++
 void solve(){
@@ -73,7 +73,7 @@ void solve(){
 }
 ```
 
-```
+
 ## Sorting a Vector
 ```c++
 void solve(){
@@ -83,7 +83,7 @@ void solve(){
 }
 ```
 
-```
+
 ## Swapping, clearing and, erasing
 ```c++
 void solve(){
@@ -102,7 +102,7 @@ void solve(){
    data.erase(data.begin()+2, data.end()-2);   /// deletes element number 3 to 3rd last(last 2 elements stay)
 }
 ```
-```
+
 ## Different ways of reading from a vector
 ```c++
 void solve(){
