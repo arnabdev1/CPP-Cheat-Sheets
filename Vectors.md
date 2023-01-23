@@ -1,4 +1,4 @@
-# Maps Cheat Sheet
+# Vectors Cheat Sheet
 
 ## Header
 ```c++
