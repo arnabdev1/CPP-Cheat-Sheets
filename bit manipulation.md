@@ -2,10 +2,12 @@
 
 ## 2^n
 ```c++
-cout<<(1<<n)<<endl;
+int power(int n){
+	return(1<<i)
+}
 ```
 
-## Check bit i is set
+## Check if bit i is set in n
 ```c++
 bool getBit(int n, int i){
 	if(n&(1<<i))            // returns 0 when bit is not set
@@ -16,13 +18,56 @@ bool getBit(int n, int i){
 ```
 
 
+## Set (to 1) bit i in n 
+```c++
+int setBit(int n, int i){
+	return (n| 1<<i);
+}
+```
 
 
+## Unset (to 0) bit i in n 
+```c++
+int unsetBit(int n, int i){
+	return n & ~(1<<i);
+}
+```
+
+## Check if n is a power of 2
+```c++
+bool power1(int n){
+	if((n&n-1)==0){         // this returns 0 for any power of 2 as they only have 1 set bit
+		return true;
+	}
+	return false;
+}
+```
 
 
+## Check if n is a power of 2
+```c++
+int numberOfOnes(int n){
+	while(n){
+	    n &=(n-1);
+	    count++;
+	}
+	return count;
+}
+```
 
-
-
+## All possible subsets of a set(ex- if size or array is 4, this will use all binary characters from 0(0000) to 4^2=16(1111))
+```c++
+void subsets(int arr[], int n){
+	for(int i=0; i<(1<<n); ++i){            // iterating from 1 to n^2(all possible permutations of n digits)
+		for(int j=0; j<n; j++){         // iterating for all the n elements of the array
+			if(i&(1<<j)){           // checking if bit j is set      
+				cout<<arr[j]<<" ";
+			}
+		}
+		cout<<endl;
+	}
+}
+```
 
 
 
@@ -124,11 +169,6 @@ void bin(unsigned n)
 ```c++
 if(!(n&(n-1)))
 	ffs(n);
-```
-
-## Turn off a particular bit in a number
-```c++
-x & (~1<<(pos-1));
 ```
 
 ## Check if 2 numbers are equal
