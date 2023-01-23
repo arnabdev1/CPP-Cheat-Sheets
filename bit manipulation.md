@@ -1,5 +1,34 @@
 # Bit Manipulation Cheat Sheet
 
+## 2^n
+```c++
+cout<<(1<<n)<<endl;
+```
+
+## Check bit i is set
+```c++
+bool getBit(int n, int i){
+	if(n&(1<<i))            // returns 0 when bit is not set
+	    return true;
+	else
+	    return false;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Check if two integers have opposite signs
 ```c++
 if(x^y >0)
