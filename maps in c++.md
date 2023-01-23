@@ -12,32 +12,11 @@ using namespace std;
 #define print(a,n) for(int i=0; i<n; i++){ cout<<a[i]<<" , "; }
 #define loop(a,b) for(int i=a;i<b;i++)
 ```
-## Finding frequency of strings
-```c++
-void findFreqOfStrings(){
-    int n;
-    cin>>n;
-    string s;
-    map<string, int> m;
-    for(int i=0;i<n;i++){
-        cin>>s;
-        auto it = m.find(s);
-        if(it == m.end()){
-            m[s]=1;
-        }else{
-            m[s]++;
-        }
-    }
-    for(auto &i:m){
-        cout<<i.first<<" "<<i.second<<endl;
-    }
-    
-}
-```
+
 ## General
 ```c++
 void solve(){
-    /// declaring the map with key as integer, element as string
+    /// declaring the map with key(index) as integer, element as string
     map<int, string> m;
     m[1] = "abc";
     m[5] = "acc";
@@ -62,6 +41,22 @@ void solve(){
     m.clear();   
 }
 ```
+
+## Finding frequency of strings
+```c++
+void findFreqOfStrings(int n, vector<string> s){
+    map<string, int> m;
+    for(int i=0;i<n;i++){
+        m[s[i]]++;
+    }
+    for(auto &i:m){
+        cout<<i.first<<" "<<i.second<<endl;
+    }
+    
+}
+```
+
+
 ## Main
 ```c++
 int main(){
