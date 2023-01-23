@@ -1,3 +1,7 @@
+# Maps Cheat Sheet
+
+## Header
+```c++
 #include "bits/stdc++.h"
 using namespace std;
 #define ll long long
@@ -7,6 +11,9 @@ using namespace std;
 #define input(a,n) for(int i=0; i<n; i++){ cin>>a[i]; }
 #define print(a,n) for(int i=0; i<n; i++){ cout<<a[i]<<" , "; }
 #define loop(a,b) for(int i=a;i<b;i++)
+```
+## Finding frequency of strings
+```c++
 void findFreqOfStrings(){
     int n;
     cin>>n;
@@ -26,7 +33,9 @@ void findFreqOfStrings(){
     }
     
 }
-
+```
+## General
+```c++
 void solve(){
     /// declaring the map with key as integer, element as string
     map<int, string> m;
@@ -50,14 +59,20 @@ void solve(){
     /// erasing a value
     m.erase(3);
     /// clearing the map
-    m.clear();
-    
-    
-    
-    
+    m.clear();   
 }
+```
+## Main
+```c++
 int main(){
     solve();
     findFreqOfStrings();
     return 0;
 }
+```
+
+
+
+
+
+
