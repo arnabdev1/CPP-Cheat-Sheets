@@ -12,7 +12,6 @@ using namespace std;
 #define print(a,n) for(int i=0; i<n; i++){ cout<<a[i]<<" , "; }
 #define loop(a,b) for(int i=a;i<b;i++)
 ```
-/// vector_name.size() gives the size of the vector
 ## Creating, adding elements and copying a Vector
 ```c++
 void (){
@@ -28,6 +27,14 @@ void (){
    vector<int> data4 = data;
 }
 ```
+
+## Finding length of a vector
+```c++
+   vector <int> data = {1,2,3};
+   int n= data.size()
+```
+
+
 ## Printing the Vector
 ```c++
 void print(vector<int> data){
