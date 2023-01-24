@@ -22,11 +22,14 @@ void solve(){
     m[5] = "acc";
     m[3] = "abb";
     m.insert({7,"afg"});
-    /// printing the map where .first returns the key and .second returns the element
     
+    
+    /// printing the map where .first returns the key and .second returns the element
     for(auto &pr:m){
         cout<<pr.first<<" "<<pr.second<<endl;
     }
+    
+    
     /// checking if a key exists in the map
     auto it = m.find(3);
     if(it == m.end()){
@@ -35,6 +38,10 @@ void solve(){
         yes;
         cout<<(*it).first<<" "<<(*it).second<<endl;
     }
+    
+    /// Finding size of map
+    int len = m.size();
+    
     /// erasing a value
     m.erase(3);
     /// clearing the map
