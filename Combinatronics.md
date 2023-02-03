@@ -42,7 +42,7 @@ ll fact(ll n)
 
 ```
 
-## nCr(needs fact() function)
+## nCr and nPr(needs fact() function)
 ```c++
 int nCr(int n, int r)
 {
@@ -57,5 +57,11 @@ int nCr(int n, int r)
     if (r == 0 || r == n)
         return 1;
     return nCr(n - 1, r - 1) + nCr(n - 1, r);
+}
+
+
+int nPr(int n, int r)
+{
+    return fact(n)/fact(n-r);
 }
 ```
