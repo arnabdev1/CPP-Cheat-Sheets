@@ -1,5 +1,39 @@
 # Bit Manipulation Cheat Sheet
 
+## Binary to decimal conversion
+```c++
+int binaryToDecimal(int n)
+{
+    int dec_num = 0 ;
+    int power = 0 ;
+    while(n>0){
+      if(n%10 == 1){ // extracting the last digit
+        dec_num += (1<<power) ;
+      }
+      power++ ;
+      n = n / 10 ;
+    }
+      return dec_num ;
+}
+```
+
+## Decimal to binary conversion
+```c++
+string decToBinary(int n)
+{
+    // Size of an integer is assumed to be 32 bits
+    string ans = "";
+    for (int i = 31; i >= 0; i--) {
+        int k = n >> i;
+        if (k & 1)
+            ans+="1";
+        else
+            ans+="0";
+    }
+    return ans;
+}
+
+
 ## 2^n
 ```c++
 int power(int n){
@@ -33,9 +67,9 @@ int unsetBit(int n, int i){
 }
 ```
 
-## Check if n is a power of 2
+## Method 1: Check if n is a power of 2
 ```c++
-bool power1(int n){
+bool power2(int n){
 	if((n&n-1)==0){         // this returns 0 for any power of 2 as they only have 1 set bit
 		return true;
 	}
@@ -43,10 +77,18 @@ bool power1(int n){
 }
 ```
 
-
-## Check if n is a power of 2
+## Method 2: Check if n is a power of 2
 ```c++
-int numberOfOnes(int n){
+bool power2(int n){
+	return (n>0 and !(n&(n-1)));
+}
+```
+
+
+## Algorithm 1 for counting set Bits
+```c++
+int countSetBit(int n){
+	count=0;
 	while(n){
 	    n &=(n-1);
 	    count++;
@@ -54,6 +96,19 @@ int numberOfOnes(int n){
 	return count;
 }
 ```
+## Algorithm 2 for counting set Bits
+```c++
+int countSetBit(int n){
+	count=0;
+	while(n){
+	    count+=(n&1);
+	    n=n>>1;
+	}
+	return count;
+}
+
+```
+
 
 ## All possible subsets of a set(ex- if size or array is 4, this will use all binary characters from 0(0000) to 4^2=16(1111))
 ```c++
@@ -128,10 +183,7 @@ int rightCircularShift(int x,int shiftBy)
 __builtin_popcount(a ^ b);
 ```
 
-## Find whether a no is power of two
-```c++
-return (n>0 and !(n&(n-1)));
-```
+`
 
 ## Position of rightmost set bit
 ```c++
@@ -255,11 +307,3 @@ while(temp){
 }
 ```
 
-## Brian Kernighan’s Algorithm for counting set Bits
-```c++
-while(n){
-    n &=(n-1);
-    count++;
-}
-
-```
