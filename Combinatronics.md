@@ -1,4 +1,4 @@
-# Vectors Cheat Sheet
+# Combinatronics Cheat Sheet
 
 ## Header
 ```c++
@@ -14,6 +14,18 @@ using namespace std;
 ```
 ## n!
 ```c++
+///EASIER CODE
+int fact(int n)
+{
+      if(n==0)
+      return 1;
+    int res = 1;
+    for (int i = 2; i <= n; i++)
+        res = res * i;
+    return res;
+}
+
+///VERY EFFICIENT CODE
 unordered_map<ll,ll> m;
 ll fact(ll n)
 {
