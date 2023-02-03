@@ -12,18 +12,26 @@ using namespace std;
 #define print(a,n) for(int i=0; i<n; i++){ cout<<a[i]<<" , "; }
 #define loop(a,b) for(int i=a;i<b;i++)
 ```
-## Creating, adding elements and copying a Vector
+## n!
 ```c++
-void (){
-   ///vector <type> name (elements);
-   ///vector of size 5 with no elements
-   vector<int> data (5); /// equivalent of this in an array is int data[5];
-   ///vector of size 5 with all elements equal to 2    
-   vector<int> data1(5, 2);
-   ///vector of specified elements    
-   vector<int> data2({1, 2, 3, 4, 5}); /// equivalent of this in an array is int data[] = {1, 2, 3, 4, 5}
-   vector<int> data3 = {1, 2, 3, 4, 5}; /// equivalent of this in an array is int data[] = {1, 2, 3, 4, 5}
-   ///copying a vector
-   vector<int> data4 = data;
+unordered_map<ll,ll> m;
+ll fact(ll n)
+{
+    if(n==1 || n==0){
+        return 1;
+    }
+    if(m.find(n)!=m.end()){
+        return m[n];
+    }
+    return m[n]=n * fact(n-1);
+}
+
+```
+
+## nCr(needs fact() function)
+```c++
+int nCr(int n, int r)
+{
+    return fact(n) / (fact(r) * fact(n - r));
 }
 ```
