@@ -24,15 +24,9 @@ int fact(int n)
         res = res * i;
     return res;
 }
-///EFFICIENT CODE
-int nCr(int n, int r)
-{
-    if (r > n)
-        return 0;
-    if (r == 0 || r == n)
-        return 1;
-    return nCr(n - 1, r - 1) + nCr(n - 1, r);
-}
+
+
+
 ///VERY EFFICIENT CODE
 unordered_map<ll,ll> m;
 ll fact(ll n)
@@ -53,5 +47,15 @@ ll fact(ll n)
 int nCr(int n, int r)
 {
     return fact(n) / (fact(r) * fact(n - r));
+}
+
+///Or
+int nCr(int n, int r)
+{
+    if (r > n)
+        return 0;
+    if (r == 0 || r == n)
+        return 1;
+    return nCr(n - 1, r - 1) + nCr(n - 1, r);
 }
 ```
