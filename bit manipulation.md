@@ -32,7 +32,7 @@ string decToBinary(int n)
     }
     return ans;
 }
-
+```
 
 ## 2^n
 ```c++
