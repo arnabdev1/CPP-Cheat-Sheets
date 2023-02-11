@@ -62,8 +62,26 @@ void findFreqOfStrings(int n, vector<string> s){
     
 }
 ```
+## Creating map ussing values in a vector, adding values of map and using reverse iterator
+```c++
+int mapSum(vector<int> &nums)
+{
+    map<int, int> mapp;
 
+    for (int i = 0; i < nums.size(); i++)
+    {
+        mapp[nums[i]]++;
+    }
+    map<int, int>::reverse_iterator it;
+    int sum = 0;
+    for (it = mapp.rbegin(); it != mapp.rend(); it++)
+    {
+        sum += it->second;
+    }
+    return sum;
+}
 
+```
 ## Main
 ```c++
 int main(){
