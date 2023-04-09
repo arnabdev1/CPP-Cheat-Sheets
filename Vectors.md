@@ -36,6 +36,9 @@ void (){
    ///vector <vector<type1>> name (number of rows,vector<type1>(number of columns, element of type1));
    ///vector with 5 rows, 6 columns in each row containing the string "Arnab"
    vector<vector<string>> data (5,vector<string>(6,"Arnab")); 
+   
+   //// or
+   vector<vector<int>> vv={{0,1,2,3}, {4,5,6,7}, {8,9,10,11}};
 }
 ```
 
