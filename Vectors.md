@@ -28,6 +28,19 @@ void (){
 }
 ```
 
+
+
+## Multidimensional vectors
+```c++
+void (){
+   ///vector <vector<type1>> name (number of rows,vector<type1>(number of columns, element of type1));
+   ///vector with 5 rows, 6 columns in each row containing the string "Arnab"
+   vector<vector<string>> data (5,vector<string>(6,"Arnab")); 
+}
+```
+
+
+
 ## Finding length of a vector
 ```c++
    vector <int> data = {1,2,3};
