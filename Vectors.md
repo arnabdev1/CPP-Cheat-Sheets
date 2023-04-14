@@ -100,6 +100,28 @@ void solve(){
 ```
 
 
+
+## (Pairs in vectors)Storing the original indices of a list and then sorting the list in order of element
+```c++
+
+    int v[7] = {6,77,8,3,5,2,1};
+    vector<pair<int,int>>res;   //// <element,index>
+    for(int i=0;i<=6;i++){
+         res.push_back({v[i],i});
+    }
+    
+    for(int i=0;i<7;i++) cout<<res[i].first<<" "<<res[i].second<<endl;
+    cout<<endl;
+    sort(res.begin(),res.end());
+    for(int i=0;i<7;i++) cout<<res[i].first<<" "<<res[i].second<<endl;
+    
+
+```
+
+
+
+
+
 ## Swapping, clearing and, erasing
 ```c++
 void solve(){
