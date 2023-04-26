@@ -183,7 +183,7 @@ int rightCircularShift(int x,int shiftBy)
 __builtin_popcount(a ^ b);
 ```
 
-`
+
 
 ## Position of rightmost set bit
 ```c++
@@ -305,5 +305,12 @@ while(temp){
     i++;
     temp = temp>>1;
 }
+```
+
+# Toggle all even bits of a number
+```c++/// swap 2 values a and b
+a=a^b
+b=b^a
+a=a^b
 ```
 
