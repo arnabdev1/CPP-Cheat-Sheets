@@ -1,27 +1,44 @@
 # Vectors Cheat Sheet
 
-## Header
+## Creating new linkedlist(containing 1 to 10)
 ```c++
-#include "bits/stdc++.h"
-using namespace std;
-#define ll long long
-#define nl cout<<endl;
-#define yes cout<<"YES"<<endl;
-#define no cout<<"NO"<<endl;
-#define input(a,n) for(int i=0; i<n; i++){ cin>>a[i]; }
-#define print(a,n) for(int i=0; i<n; i++){ cout<<a[i]<<" , "; }
-#define loop(a,b) for(int i=a;i<b;i++)
+int i = 1;
+ListNode* head = new ListNode(i); // Dynamically allocate memory for head
+ListNode* current = head;         // Create a pointer to traverse the list
+//or
+ListNode head(i);           // Create head as a `ListNode` object on the stack
+ListNode* current = &head;  // Create a pointer to traverse the list
+
+
+while (i <= 10) {
+  current->next = new ListNode(i);
+  current = current->next;
+  i++;
+}
 ```
 
-## Header
+## Traversing through linkedlist(calculating sum)
 ```c++
-#include "bits/stdc++.h"
-using namespace std;
-#define ll long long
-#define nl cout<<endl;
-#define yes cout<<"YES"<<endl;
-#define no cout<<"NO"<<endl;
-#define input(a,n) for(int i=0; i<n; i++){ cin>>a[i]; }
-#define print(a,n) for(int i=0; i<n; i++){ cout<<a[i]<<" , "; }
-#define loop(a,b) for(int i=a;i<b;i++)
+int sum = 0;
+ListNode* temp = head;
+while(temp!=nullptr){
+  int val = temp->val; 
+  sum += val;
+  temp = temp->next;
+}
+```
+
+
+## Reversing a linkedlist
+```c++
+        if (head == NULL || head->next == NULL)return head;
+        
+        ListNode *prev = NULL;
+        ListNode *curr = head;
+        while(curr != NULL){
+            ListNode *temp = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = temp;
+        }
 ```
