@@ -43,3 +43,27 @@
     
 
 ```
+
+## BFS Traversal
+![image](https://github.com/user-attachments/assets/852d0cde-bd5b-436a-b08f-ec63ae0c618b)
+```c++
+
+   // vector<vector<int>> adj = {{}, {2,6}, {1,3,4}, {2}, {2,5}, {4,8}, {1,7,9}, {6,8}, {5,7}, {6}};
+    vector<vector<int>> adj = {{}, {2,3}, {1,5,6}, {1,4,7}, {3,8}, {2}, {2}, {2}, {3,8}, {4,7}};
+    int n = adj.size();
+    vector<bool> vis(n,false);
+    int start = 1;
+    vector<int> res;
+    dfs(start, adj, vis, res);
+
+    void dfs(int node, vector<vector<int>> &adj, vector<bool> &vis, vector<int> &res){
+        vis[node] = true;
+        res.push_back(node);
+        for(auto it: adj[node]){
+            if(!vis[it]){
+                dfs(it, adj, vis, res);
+            }
+        }
+    }    
+
+```
