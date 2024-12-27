@@ -40,7 +40,6 @@
         // returning the output list.
         return res;
     }
-
     
 
 ```
