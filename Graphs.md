@@ -6,7 +6,10 @@
 
 // visited array is needed only for undirected graph because if graph is unidirectional then no need to check if element was already visited
 // 0 has no neighbors(DNE), 1's neighbors are 2 and 6 and so on.
+
     vector<vector<int>> adj = {{}, {2,6}, {1,3,4}, {2}, {2,5}, {4,8}, {1,7,9}, {6,8}, {5,7}, {6}};
+   // 1 2 6 3 4 7 9 5 8 
+
     int start = 1;
     vector<int> bfsOfGraph(int start, vector<vector<int>> &adj) {
         int V = adj.size();
@@ -49,7 +52,11 @@
 ```c++
 
    // vector<vector<int>> adj = {{}, {2,6}, {1,3,4}, {2}, {2,5}, {4,8}, {1,7,9}, {6,8}, {5,7}, {6}};
+   // 1 2 3 4 5 8 7 6 9 
+
     vector<vector<int>> adj = {{}, {2,3}, {1,5,6}, {1,4,7}, {3,8}, {2}, {2}, {2}, {3,8}, {4,7}};
+   // 1 2 5 6 3 4 8 7 
+
     int n = adj.size();
     vector<bool> vis(n,false);
     int start = 1;
