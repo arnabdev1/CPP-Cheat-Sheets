@@ -47,7 +47,7 @@
 
 ```
 
-## BFS Traversal
+## DFS Traversal
 ![image](https://github.com/user-attachments/assets/852d0cde-bd5b-436a-b08f-ec63ae0c618b)
 ```c++
 
