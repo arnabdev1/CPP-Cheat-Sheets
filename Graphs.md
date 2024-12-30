@@ -74,3 +74,52 @@
     }    
 
 ```
+
+
+## When grid is given and adjacent elements represent the next level(BFS example)
+```c++
+vector<vector<int>> grid = {
+    {1, 0, 1},
+    {1, 1, 0},
+    {0, 1, 1}
+};
+
+// 1 means it qualifies as part of the graph and will be traversed if connected to another 1 in one of 4 sides
+vector<pair<int,int>> bfsGrid(vector<vector<int>>& grid) {
+    vector<pair<int,int>> res;
+    int n = grid.size();
+    int m = grid[0].size();
+    vector<vector<bool>> vis(n, vector<bool>(m, false));
+    queue<pair<int, int>> q; // BFS queue
+
+    // Start BFS from (0, 0)
+    q.push({0, 0});
+    vis[0][0] = true;
+
+    // Directions for traversal (right, left, down, up)
+    vector<pair<int, int>> directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+    // BFS traversal
+    while (!q.empty()) {
+        auto temp = q.front();
+        int x = temp.first, y = temp.second;
+        res.push_back(temp); // Collect the grid value at (x, y)
+        q.pop();
+
+        for (auto dir : directions) {
+            int dx = dir.first, dy = dir.second;
+            int nx = x + dx, ny = y + dy;
+
+            // Check bounds and if it's a valid node (value = 1) and not visited
+            if(nx >= 0 && nx < n && ny >= 0 && ny < m && grid[nx][ny] == 1 && !vis[nx][ny]) {
+                vis[nx][ny] = true;
+                q.push({nx, ny});
+            }
+        }
+    }
+
+    return res;
+}
+vector<pair<int,int>>  result = bfsGrid(grid);
+```
+
