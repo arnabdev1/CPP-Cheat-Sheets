@@ -123,3 +123,49 @@ vector<pair<int,int>> bfsGrid(vector<vector<int>>& grid) {
 vector<pair<int,int>>  result = bfsGrid(grid);
 ```
 
+
+
+
+## Finding cycle in undrected graph(union find algorithm)
+```c++
+    int findParent(int a, vector<int>& par) {
+        if (par[a] != a) {
+            par[a] = findParent(par[a], par);  // Path compression
+        }
+        return par[a];
+    }
+    
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<int> par(numCourses);
+        vector<int> rank(numCourses, 0);
+        
+        // Initialize the union-find data structure
+        for (int i = 0; i < numCourses; i++) {
+            par[i] = i;
+        }
+        
+        for (auto edge : prerequisites) {
+            int a = edge[0];
+            int b = edge[1];
+            
+            int rootA = findParent(a, par);
+            int rootB = findParent(b, par);
+            
+            if (rootA == rootB) {
+                return false;  // Cycle detected
+            }
+            
+            // Union by rank
+            if (rank[rootA] > rank[rootB]) {
+                par[rootB] = rootA;
+            } else if (rank[rootB] > rank[rootA]) {
+                par[rootA] = rootB;
+            } else {
+                par[rootA] = rootB;
+                rank[rootB]++;
+            }
+        }
+        
+        return true;  // No cycles found
+    }
+```
