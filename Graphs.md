@@ -126,7 +126,7 @@ vector<pair<int,int>>  result = bfsGrid(grid);
 
 
 
-## Finding cycle in undrected graph(union find algorithm)
+## Finding cycle in undrected graph when edges are given(union find algorithm)
 ```c++
     int findParent(int a, vector<int>& par) {
         if (par[a] != a) {
@@ -168,4 +168,81 @@ vector<pair<int,int>>  result = bfsGrid(grid);
         
         return true;  // No cycles found
     }
+```
+
+
+
+## Finding cycle in undrected graph when adjacency list is given(DFS)
+```c++
+bool hasCycleDFS(int node, int parent, vector<vector<int>>& adj, vector<bool>& visited) {
+    visited[node] = true;
+    for (int neighbor : adj[node]) {
+        if (!visited[neighbor]) {
+            if (hasCycleDFS(neighbor, node, adj, visited)) return true;
+        } else if (neighbor != parent) {
+            return true;  // Cycle detected
+        }
+    }
+    return false;
+}
+
+bool detectCycle(int n, vector<vector<int>>& edges) {
+    vector<vector<int>> adj(n);
+    vector<bool> visited(n, false);
+    for (auto& edge : edges) {
+        adj[edge[0]].push_back(edge[1]);
+        adj[edge[1]].push_back(edge[0]);
+    }
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            if (hasCycleDFS(i, -1, adj, visited)) return true;
+        }
+    }
+    return false;
+}
+```
+## Finding cycle in undrected graph when adjacency list is given(BFS)
+```c++
+bool hasCycleBFS(int start, vector<vector<int>>& adj, vector<bool>& visited) {
+    queue<pair<int, int>> q; // {node, parent}
+    q.push({start, -1});
+    visited[start] = true;
+
+    while (!q.empty()) {
+        int node = q.front().first;
+        int parent = q.front().second;
+        q.pop();
+
+        for (int neighbor : adj[node]) {
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                q.push({neighbor, node}); // Push neighbor with current node as parent
+            } else if (neighbor != parent) {
+                return true; // Cycle detected
+            }
+        }
+    }
+    return false;
+}
+
+bool detectCycle(int n, vector<vector<int>>& edges) {
+    vector<vector<int>> adj(n);
+    vector<bool> visited(n, false);
+
+    // Create adjacency list
+    for (auto& edge : edges) {
+        adj[edge[0]].push_back(edge[1]);
+        adj[edge[1]].push_back(edge[0]);
+    }
+    // the above conversion code can be ignored if adjacency list is already given
+    // Check for cycles in all components
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            if (hasCycleBFS(i, adj, visited)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
 ```
