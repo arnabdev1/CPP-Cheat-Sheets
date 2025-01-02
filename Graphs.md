@@ -246,3 +246,39 @@ bool detectCycle(int n, vector<vector<int>>& edges) {
     return false;
 }
 ```
+
+
+
+## Finding cycle in directed graph when adjacency list is given(DFS)
+```c++
+    bool dfs(int node, vector<vector<int>> adj, vector<int>& vis, vector<int>& pathvis){
+        vis[node] = 1;
+        pathvis[node] = 1;
+        
+        for(auto it : adj[node]){
+            if(!vis[it]){
+                if(dfs(it, adj, vis, pathvis) == true){
+                    return true;
+                }
+            }else if(pathvis[it]==true){
+                return true; // when both vis and path vis is true indicating 
+                            //  that this node was visited twice in the same path and direction
+            }
+        }
+        pathvis[node]=0; // resetting for other paths because this path has been traversed fully
+        return false;
+    }
+    bool isCyclic(int V, vector<vector<int>> adj) {
+        vector<int> vis(V,0);
+        vector<int> pathvis(V,0);
+        for(int i=0;i<V;i++){
+            if(!vis[i]){
+                if(dfs(i, adj, vis, pathvis) == true){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+```
