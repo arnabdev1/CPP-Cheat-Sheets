@@ -282,3 +282,32 @@ bool detectCycle(int n, vector<vector<int>>& edges) {
     }
 
 ```
+
+## Topological sort of Directed Acyclic Graphs (DFS)
+```c++
+    void dfs(int node, vector<vector<int>>& adj, vector<int>& vis,  stack<int>& st){
+        vis[node] = true;
+        for(auto it:adj[node]){
+            if(vis[it]==false){
+                dfs(it,adj,vis,st);
+            }
+        }
+        st.push(node);
+    }
+    
+    vector<int> topologicalSort(vector<vector<int>>& adj) {
+        int n = adj.size();
+        vector<int> ans, vis(n,false);
+        stack<int> st;
+        for(int i=0;i<n;i++){
+            if(vis[i]==false){
+                dfs(i, adj, vis, st);
+            }
+        }
+        while(!st.empty()){
+            ans.push_back(st.top());
+            st.pop();
+        }
+        return ans;
+    }
+```
