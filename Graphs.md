@@ -249,7 +249,7 @@ bool detectCycle(int n, vector<vector<int>>& edges) {
 
 
 
-## Finding cycle in directed graph when adjacency list is given(DFS)
+## Finding cycle in **DIRECTED** graph when adjacency list is given(DFS)
 ```c++
     bool dfs(int node, vector<vector<int>> adj, vector<int>& vis, vector<int>& pathvis){
         vis[node] = 1;
