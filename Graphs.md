@@ -172,7 +172,7 @@ vector<pair<int,int>>  result = bfsGrid(grid);
 
 
 
-## Finding cycle in undrected graph when adjacency list is given(DFS)
+## Finding cycle in undirected graph when adjacency list is given(DFS)
 ```c++
 bool hasCycleDFS(int node, int parent, vector<vector<int>>& adj, vector<bool>& visited) {
     visited[node] = true;
@@ -201,7 +201,7 @@ bool detectCycle(int n, vector<vector<int>>& edges) {
     return false;
 }
 ```
-## Finding cycle in undrected graph when adjacency list is given(BFS)
+## Finding cycle in undirected graph when adjacency list is given(BFS)
 ```c++
 bool hasCycleBFS(int start, vector<vector<int>>& adj, vector<bool>& visited) {
     queue<pair<int, int>> q; // {node, parent}
@@ -282,8 +282,39 @@ bool detectCycle(int n, vector<vector<int>>& edges) {
     }
 
 ```
+## Finding cycle in **DIRECTED** graph when adjacency list is given(BFS) using Kahn's algorithm
+```c++
+    bool isCyclic(int V, vector<vector<int>> adj){
+        int n = V;
+        vector<int> inDegree(n,0);
+        for(int i=0;i<n;i++){
+            for(auto it:adj[i]){
+                inDegree[it]++;
+            }
+        }
+        
+        queue<int> q;
+        
+        for(int i=0;i<n;i++){
+            if(inDegree[i]==0) q.push(i);
+        }
+        
+        vector<int> topo;
+        while(!q.empty()){
+            int node = q.front();
+            q.pop();
+            topo.push_back(node);
+            for(auto it: adj[node]){
+                inDegree[it]--;
+                if(inDegree[it]==0)q.push(it);
+                
+            }
+        }
+        return topo.size()!=n;
+    }
+```
 
-## Topological sort of Directed Acyclic Graphs (DFS)
+## Topological sort of Directed Acyclic Graphs (DFS) 
 ```c++
     void dfs(int node, vector<vector<int>>& adj, vector<int>& vis,  stack<int>& st){
         vis[node] = true;
@@ -344,3 +375,7 @@ bool detectCycle(int n, vector<vector<int>>& edges) {
         
     }
 ```
+
+
+
+
