@@ -1,0 +1,24 @@
+# Combinatronics Cheat Sheet
+
+### 
+nPn = n! (permutation of n things in n positions)
+nPr = n!/(n-r)!    (permutation of n things in r positions)
+nCr = n!/((n-r)!*r*)
+
+
+
+## n!
+```c++
+///EASIER CODE
+int fact(int n)
+{
+      if(n==0)
+      return 1;
+    int res = 1;
+    for (int i = 2; i <= n; i++)
+        res = res * i;
+    return res;
+}
+
+
+```
