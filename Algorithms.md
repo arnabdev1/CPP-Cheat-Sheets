@@ -56,8 +56,6 @@ public:
 
 
 ## Find target or largest element smaller than target
-```
-## Binary Search with built-in functions
 ```c++
 class Solution {
 public:
@@ -86,8 +84,6 @@ public:
 
 
 ## Find target or smallest element larger than target
-```
-## Binary Search with built-in functions
 ```c++
 class Solution {
 public:
