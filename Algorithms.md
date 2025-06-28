@@ -52,3 +52,62 @@ public:
     }
 };
 ```
+
+
+
+## Find target or largest element smaller than target
+```
+## Binary Search with built-in functions
+```c++
+class Solution {
+public:
+    int searchOrFloor(vector<int>& nums, int target) {
+        int l = 0, r = nums.size() - 1;
+        int ans = -1;
+
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] == target) {
+                return m;
+            } else if (nums[m] < target) {
+                ans = m;       // potential floor
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
+        }
+
+        return ans; // index of floor or -1 if no floor exists
+    }
+};
+
+```
+
+
+
+## Find target or smallest element larger than target
+```
+## Binary Search with built-in functions
+```c++
+class Solution {
+public:
+    int searchOrCeil(vector<int>& nums, int target) {
+        int l = 0, r = nums.size() - 1;
+        int ans = -1;
+
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] == target) {
+                return m;
+            } else if (nums[m] > target) {
+                ans = m;       // potential ceil
+                r = m - 1;
+            } else {
+                l = m + 1;
+            }
+        }
+
+        return ans; // index of ceil or -1 if no ceil exists
+    }
+};
+```
