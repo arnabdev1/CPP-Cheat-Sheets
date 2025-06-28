@@ -52,7 +52,7 @@ public:
     }
 };
 ```
-## Binary Search with built-in functions
+## Binary Search to find pivot after rotating array
 ```c++
 int findPivot(vector<int>& nums) {
     int l = 0, r = nums.size() - 1;
