@@ -52,8 +52,27 @@ public:
     }
 };
 ```
+## Binary Search with built-in functions
+```c++
+int findPivot(vector<int>& nums) {
+    int l = 0, r = nums.size() - 1;
 
+    while (l < r) {
+        int m = l + (r - l) / 2;
 
+        if (nums[m] > nums[r]) {
+            // Pivot is in the right half
+            l = m + 1;
+        } else {
+            // Pivot is in the left half (or m could be pivot)
+            r = m;
+        }
+    }
+
+    // At the end, l == r == pivot index
+    return l;
+}
+```
 
 ## Find target or largest element smaller than target
 ```c++
