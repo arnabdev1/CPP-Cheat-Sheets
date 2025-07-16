@@ -77,3 +77,37 @@ void bfs(TreeNode* root) {
 }
 
 ```
+
+## DFS Binary tree max depth(root to leaf)
+```c++
+// recursive
+    int maxDepth(TreeNode* root) {
+        if (root == nullptr) {
+            return 0;
+        }
+
+        return 1 + max(maxDepth(root->left), maxDepth(root->right));
+    }
+// iterative
+    int maxDepth(TreeNode* root) {
+        if(root == nullptr) return 0;
+        stack<pair<TreeNode*,int>> s;
+        s.push({root,1});
+        int maxx = 1;
+        while(!s.empty()){
+            pair<TreeNode*,int> curr = s.top();
+            s.pop();
+            TreeNode* node = curr.first;
+            int depth = curr.second;
+            maxx = max(depth,maxx);
+            if(node->right){
+                s.push({node->right,depth+1});
+            }
+            if(node->left){
+                s.push({node->left, depth+1});
+            }
+            
+        }
+        return maxx;
+    }
+```
