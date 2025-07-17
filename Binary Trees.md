@@ -111,3 +111,19 @@ void bfs(TreeNode* root) {
         return maxx;
     }
 ```
+
+
+
+
+
+## DFS check if binary trees are same
+```c++
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(!p&&!q) return true;
+        if(p&&q && p->val == q->val){
+            return isSameTree(p->left,q->left)&&isSameTree(p->right,q->right);
+        }else{
+            return false;
+        }
+    }
+```
