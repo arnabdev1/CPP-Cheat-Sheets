@@ -127,3 +127,30 @@ void bfs(TreeNode* root) {
         }
     }
 ```
+
+
+## BFS Level order traversal saved in an array
+```c++
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        queue<pair<TreeNode*,int>> q;
+        vector<vector<int>> v;        
+        if(!root) return v;
+
+        q.push({root,0});
+        while(!q.empty()){
+            TreeNode* temp = q.front().first;
+            int level = q.front().second;
+            // if that level exists pushback element or push back vector
+            if(v.size()<=level){
+                v.push_back({temp->val});
+            }else{
+                v[level].push_back(temp->val);
+            }
+            // cout << temp->val << endl;
+            q.pop();
+            if(temp->left) q.push({temp->left, level+1});
+            if(temp->right) q.push({temp->right,level+1});
+        }
+        return v;
+    }
+```
