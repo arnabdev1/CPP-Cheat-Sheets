@@ -154,3 +154,30 @@ void bfs(TreeNode* root) {
         return v;
     }
 ```
+
+
+## Checking if BST is valid using DFS
+```c++
+class Solution {
+public:
+    bool dfs(TreeNode* root, long currmin, long currmax) {
+        if (!root) return true;
+
+        // Check current node within bounds
+        if (root->val <= currmin || root->val >= currmax) return false;
+
+        // Left: max bound becomes root->val and min bound comes from ancestors
+        if (!dfs(root->left, currmin, root->val)) return false;
+
+        // Right: min bound becomes root->val and max bound comes from ancestors
+        if (!dfs(root->right, root->val, currmax)) return false;
+
+        return true;
+    }
+
+    bool isValidBST(TreeNode* root) {
+        return dfs(root, LONG_MIN, LONG_MAX);
+    }
+};
+```
+
