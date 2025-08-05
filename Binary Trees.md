@@ -20,7 +20,7 @@ void preorder(TreeNode* root) {
     preorder(root->left);
     preorder(root->right);
 }
-// Inorder: Left → Root → Right
+// Inorder: Left → Root → Right this gives ascending order traversal of BST
 void inorder(TreeNode* root) {
     if (root == nullptr) return;
     inorder(root->left);
