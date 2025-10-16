@@ -307,14 +307,8 @@ Then create concrete implementations:
 
 10. Summary Table
 
-Concept	Description	Example
-Generic Class	Class parameterized with a type	class Box<T>
-Generic Method	Method with its own type parameter	<T> void print(T[])
-Bounded Generics	Restrict type parameters using extends	<E extends Number>
-Raw Types	Generic classes without specifying type — unsafe	ArrayList list = new ArrayList();
-Wildcards	Flexible unknown type parameter ?, ? extends, ? super	List<? extends Number>
-Type Erasure	Generic info removed at compile time	Runtime uses raw types
-Restrictions	No new E(), no E[], no static E, no generic exceptions	Compiler errors
+<img width="1688" height="902" alt="image" src="https://github.com/user-attachments/assets/070b4dd5-1280-43d2-b98d-5500268545a8" />
+
 
 
 ⸻
