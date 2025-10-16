@@ -211,10 +211,8 @@ list.add("Hello");
 
 Wildcards allow flexibility when working with generic methods or collections of unknown types.
 
-Syntax	Name	Meaning
-?	Unbounded	Any type
-? extends T	Upper bounded	Some unknown subtype of T
-? super T	Lower bounded	Some unknown supertype of T
+<img width="1698" height="384" alt="image" src="https://github.com/user-attachments/assets/a10971fa-d48b-4208-9ca6-15aa4a82debb" />
+
 
 Unbounded Wildcard
 ```java
