@@ -393,5 +393,3 @@ Idempotency means making the same request multiple times yields the same result 
 
 * **Idempotent:** GET, PUT, DELETE, HEAD, OPTIONS.
 * **Non-Idempotent:** POST (calling it 3 times creates 3 different records).
-
-```
