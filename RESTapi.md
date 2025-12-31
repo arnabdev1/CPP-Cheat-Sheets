@@ -66,12 +66,12 @@ Understanding **Idempotency** is a key interview differentiator. An operation is
 
 | Method | Description | CRUD Operation | Safe? | Idempotent? |
 | :--- | :--- | :--- | :--- | :--- |
-| **GET** | Retrieve data[cite: 74]. Should have no side effects. | Read | Yes | **Yes** |
-| **POST** | Submit data to create a resource[cite: 76]. | Create | No | **No** |
-| **PUT** | Update/Replace a resource entirely[cite: 78]. | Update (Full) | No | **Yes** |
-| **PATCH** | Update a resource partially[cite: 81]. | Update (Partial)| No | No* |
-| **DELETE** | Remove a resource[cite: 79]. | Delete | No | **Yes** |
-| **HEAD** | Same as GET but returns headers only (no body)[cite: 80]. | Read | Yes | **Yes** |
+| **GET** | Retrieve data. Should have no side effects. | Read | Yes | **Yes** |
+| **POST** | Submit data to create a resource. | Create | No | **No** |
+| **PUT** | Update/Replace a resource entirely. | Update (Full) | No | **Yes** |
+| **PATCH** | Update a resource partially. | Update (Partial)| No | No* |
+| **DELETE** | Remove a resource. | Delete | No | **Yes** |
+| **HEAD** | Same as GET but returns headers only (no body). | Read | Yes | **Yes** |
 
 *> **Note on PATCH:** PATCH is theoretically non-idempotent, though most APIs implement it idempotently.*
 
