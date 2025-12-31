@@ -112,7 +112,7 @@ When making a request (e.g., via Postman or Fetch), it consists of:
     * `Authorization: Bearer <token>`
     * `Content-Type: application/json`
 4.  **Body (Data):** The JSON payload (used in POST/PUT/PATCH).
-    * `{ "name": "John", "age": 30 }`[cite: 25].
+    * `{ "name": "John", "age": 30 }`
 
 ---
 
@@ -137,7 +137,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// Middleware to parse JSON bodies [cite: 119]
+// Middleware to parse JSON bodies 
 app.use(express.json());
 
 // Mock Database (In-Memory)
@@ -147,7 +147,7 @@ let items = [
 ];
 
 // ----------------------------------------------------
-// 1. GET - Retrieve all items [cite: 138]
+// 1. GET - Retrieve all items]
 // ----------------------------------------------------
 app.get('/api/items', (req, res) => {
     res.status(200).json({
@@ -161,7 +161,7 @@ app.get('/api/items', (req, res) => {
 // 2. GET (by ID) - Retrieve single item
 // ----------------------------------------------------
 app.get('/api/items/:id', (req, res) => {
-    // req.params.id fetches the URL parameter [cite: 163]
+    // req.params.id fetches the URL parameter 
     const item = items.find(i => i.id === parseInt(req.params.id));
 
     if (!item) {
@@ -172,10 +172,10 @@ app.get('/api/items/:id', (req, res) => {
 });
 
 // ----------------------------------------------------
-// 3. POST - Create new item [cite: 147]
+// 3. POST - Create new item 
 // ----------------------------------------------------
 app.post('/api/items', (req, res) => {
-    // req.body contains the data sent by client [cite: 153]
+    // req.body contains the data sent by client 
     const { name, price } = req.body;
 
     if (!name || !price) {
@@ -190,12 +190,12 @@ app.post('/api/items', (req, res) => {
 
     items.push(newItem);
 
-    // 201 status for creation [cite: 198]
+    // 201 status for creation
     res.status(201).json({ success: true, data: newItem });
 });
 
 // ----------------------------------------------------
-// 4. PUT - Update item fully [cite: 158]
+// 4. PUT - Update item fully 
 // ----------------------------------------------------
 app.put('/api/items/:id', (req, res) => {
     const id = parseInt(req.params.id);
@@ -216,11 +216,11 @@ app.put('/api/items/:id', (req, res) => {
 });
 
 // ----------------------------------------------------
-// 5. DELETE - Remove item [cite: 168]
+// 5. DELETE - Remove item 
 // ----------------------------------------------------
 app.delete('/api/items/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    const itemIndex = items.findIndex(i => i.id === id); // [cite: 176]
+    const itemIndex = items.findIndex(i => i.id === id); 
 
     if (itemIndex === -1) {
         return res.status(404).json({ success: false, message: "Item not found" });
