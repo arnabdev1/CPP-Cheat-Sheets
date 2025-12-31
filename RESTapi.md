@@ -19,11 +19,11 @@ A comprehensive guide to understanding, building, and mastering RESTful APIs. Th
 
 ## What is a REST API?
 
-**REST** stands for **Re**presentational **S**tate **T**ransfer. [cite_start]It is not a protocol (like HTTP) or a library, but an **architectural style** for designing networked applications[cite: 23].
+**REST** stands for **Re**presentational **S**tate **T**ransfer. It is not a protocol (like HTTP) or a library, but an **architectural style** for designing networked applications[cite: 23].
 
 * **Core Concept:** Resources (data entities like Users, Products, Orders) are treated as objects accessible via a specific URI (Uniform Resource Identifier).
-* [cite_start]**Communication:** Data is usually exchanged in **JSON** (JavaScript Object Notation) format, though XML is also possible[cite: 25].
-* [cite_start]**Goal:** To allow different software systems to communicate over the internet regardless of their underlying language or platform[cite: 23].
+* **Communication:** Data is usually exchanged in **JSON** (JavaScript Object Notation) format, though XML is also possible[cite: 25].
+* **Goal:** To allow different software systems to communicate over the internet regardless of their underlying language or platform[cite: 23].
 
 ---
 
@@ -32,31 +32,31 @@ A comprehensive guide to understanding, building, and mastering RESTful APIs. Th
 To be truly "RESTful," an API must adhere to these architectural constraints:
 
 ### 1. Client-Server Architecture
-[cite_start]The user interface (Client) is completely separate from the data storage and logic (Server)[cite: 54].
+The user interface (Client) is completely separate from the data storage and logic (Server)[cite: 54].
 * **Benefit:** Portability of the UI and scalability of the server. They evolve independently.
 
 ### 2. Statelessness
-[cite_start]**Crucial for Interviews:** The server **never** stores information about the client's session[cite: 28, 56].
-* [cite_start]Every single request must contain **all** the information necessary to process it (e.g., Auth tokens, filters)[cite: 28].
+**Crucial for Interviews:** The server **never** stores information about the client's session[cite: 28, 56].
+* Every single request must contain **all** the information necessary to process it (e.g., Auth tokens, filters)[cite: 28].
 * **Benefit:** Reliability and Scalability. The server doesn't need to remember "who asked for this 5 minutes ago."
 
 ### 3. Cacheable
-[cite_start]Responses must define themselves as cacheable or non-cacheable[cite: 58].
+Responses must define themselves as cacheable or non-cacheable[cite: 58].
 * If a response is cacheable, the client can reuse that data for equivalent requests later.
-* [cite_start]**Benefit:** Reduces server load and improves client performance[cite: 58].
+* **Benefit:** Reduces server load and improves client performance[cite: 58].
 
 ### 4. Uniform Interface
-This is the most distinguishing feature of REST. [cite_start]It simplifies and decouples the architecture[cite: 52].
+This is the most distinguishing feature of REST. It simplifies and decouples the architecture[cite: 52].
 * **Resource Identification:** Resources are named in requests (e.g., `/api/users/1`).
 * **Self-Descriptive Messages:** The message contains enough info to describe how to process it (e.g., `Content-Type: application/json`).
 * **HATEOAS:** (Hypermedia As The Engine Of Application State) - Responses should contain links to other related resources (like a website menu).
 
 ### 5. Layered System
-[cite_start]The client cannot tell if it is connected directly to the end server or an intermediary (like a load balancer or proxy)[cite: 60].
-* [cite_start]**Benefit:** Improves scalability and security[cite: 62].
+The client cannot tell if it is connected directly to the end server or an intermediary (like a load balancer or proxy)[cite: 60].
+* **Benefit:** Improves scalability and security[cite: 62].
 
 ### 6. Code on Demand (Optional)
-[cite_start]Servers can temporarily extend or customize client functionality by transferring executable code (e.g., Java applets or client-side JavaScript)[cite: 63].
+Servers can temporarily extend or customize client functionality by transferring executable code (e.g., Java applets or client-side JavaScript)[cite: 63].
 
 ---
 
@@ -66,12 +66,12 @@ Understanding **Idempotency** is a key interview differentiator. An operation is
 
 | Method | Description | CRUD Operation | Safe? | Idempotent? |
 | :--- | :--- | :--- | :--- | :--- |
-| **GET** | [cite_start]Retrieve data[cite: 74]. Should have no side effects. | Read | Yes | **Yes** |
-| **POST** | [cite_start]Submit data to create a resource[cite: 76]. | Create | No | **No** |
-| **PUT** | [cite_start]Update/Replace a resource entirely[cite: 78]. | Update (Full) | No | **Yes** |
-| **PATCH** | [cite_start]Update a resource partially[cite: 81]. | Update (Partial)| No | No* |
-| **DELETE** | [cite_start]Remove a resource[cite: 79]. | Delete | No | **Yes** |
-| **HEAD** | [cite_start]Same as GET but returns headers only (no body)[cite: 80]. | Read | Yes | **Yes** |
+| **GET** | Retrieve data[cite: 74]. Should have no side effects. | Read | Yes | **Yes** |
+| **POST** | Submit data to create a resource[cite: 76]. | Create | No | **No** |
+| **PUT** | Update/Replace a resource entirely[cite: 78]. | Update (Full) | No | **Yes** |
+| **PATCH** | Update a resource partially[cite: 81]. | Update (Partial)| No | No* |
+| **DELETE** | Remove a resource[cite: 79]. | Delete | No | **Yes** |
+| **HEAD** | Same as GET but returns headers only (no body)[cite: 80]. | Read | Yes | **Yes** |
 
 *> **Note on PATCH:** PATCH is theoretically non-idempotent, though most APIs implement it idempotently.*
 
@@ -83,7 +83,7 @@ Don't just say "It returns an error." Be specific.
 
 ### 2xx: Success
 * **200 OK:** Standard response for successful HTTP requests.
-* [cite_start]**201 Created:** The request has been fulfilled and a new resource has been created (standard for POST)[cite: 198].
+* **201 Created:** The request has been fulfilled and a new resource has been created (standard for POST)[cite: 198].
 * **204 No Content:** The request succeeded, but there is no content to send (standard for DELETE).
 
 ### 3xx: Redirection
@@ -112,7 +112,7 @@ When making a request (e.g., via Postman or Fetch), it consists of:
     * `Authorization: Bearer <token>`
     * `Content-Type: application/json`
 4.  **Body (Data):** The JSON payload (used in POST/PUT/PATCH).
-    * [cite_start]`{ "name": "John", "age": 30 }`[cite: 25].
+    * `{ "name": "John", "age": 30 }`[cite: 25].
 
 ---
 
@@ -137,7 +137,7 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-[cite_start]// Middleware to parse JSON bodies [cite: 119]
+// Middleware to parse JSON bodies [cite: 119]
 app.use(express.json());
 
 // Mock Database (In-Memory)
@@ -147,7 +147,7 @@ let items = [
 ];
 
 // ----------------------------------------------------
-[cite_start]// 1. GET - Retrieve all items [cite: 138]
+// 1. GET - Retrieve all items [cite: 138]
 // ----------------------------------------------------
 app.get('/api/items', (req, res) => {
     res.status(200).json({
@@ -161,7 +161,7 @@ app.get('/api/items', (req, res) => {
 // 2. GET (by ID) - Retrieve single item
 // ----------------------------------------------------
 app.get('/api/items/:id', (req, res) => {
-    [cite_start]// req.params.id fetches the URL parameter [cite: 163]
+    // req.params.id fetches the URL parameter [cite: 163]
     const item = items.find(i => i.id === parseInt(req.params.id));
 
     if (!item) {
@@ -172,10 +172,10 @@ app.get('/api/items/:id', (req, res) => {
 });
 
 // ----------------------------------------------------
-[cite_start]// 3. POST - Create new item [cite: 147]
+// 3. POST - Create new item [cite: 147]
 // ----------------------------------------------------
 app.post('/api/items', (req, res) => {
-    [cite_start]// req.body contains the data sent by client [cite: 153]
+    // req.body contains the data sent by client [cite: 153]
     const { name, price } = req.body;
 
     if (!name || !price) {
@@ -190,12 +190,12 @@ app.post('/api/items', (req, res) => {
 
     items.push(newItem);
 
-    [cite_start]// 201 status for creation [cite: 198]
+    // 201 status for creation [cite: 198]
     res.status(201).json({ success: true, data: newItem });
 });
 
 // ----------------------------------------------------
-[cite_start]// 4. PUT - Update item fully [cite: 158]
+// 4. PUT - Update item fully [cite: 158]
 // ----------------------------------------------------
 app.put('/api/items/:id', (req, res) => {
     const id = parseInt(req.params.id);
@@ -216,11 +216,11 @@ app.put('/api/items/:id', (req, res) => {
 });
 
 // ----------------------------------------------------
-[cite_start]// 5. DELETE - Remove item [cite: 168]
+// 5. DELETE - Remove item [cite: 168]
 // ----------------------------------------------------
 app.delete('/api/items/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    [cite_start]const itemIndex = items.findIndex(i => i.id === id); // [cite: 176]
+    const itemIndex = items.findIndex(i => i.id === id); // [cite: 176]
 
     if (itemIndex === -1) {
         return res.status(404).json({ success: false, message: "Item not found" });
