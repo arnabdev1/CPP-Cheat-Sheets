@@ -1,4 +1,8 @@
-python```
+# Binary Trees Cheat Sheet
+
+## Binary Tree Node Declaration
+```python
+
 
 """
 Kaggle: Intro to Machine Learning
@@ -72,5 +76,7 @@ print(predictions)
 # Comparing predictions to actual values
 print("\nActual target values (Prices):")
 print(y.head().tolist())
+
+```
 
 ```
