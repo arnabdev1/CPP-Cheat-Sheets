@@ -74,9 +74,7 @@ print(y.head().tolist())
 ```python
 import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
-# We import a new tool to split our data
 from sklearn.model_selection import train_test_split
-# We import a metric to see how "wrong" our model is
 from sklearn.metrics import mean_absolute_error
 
 # STEP 1: Load and Clean
@@ -89,33 +87,47 @@ melbourne_features = ['Rooms', 'Bathroom', 'Landsize', 'Lattitude', 'Longtitude'
 X = data[melbourne_features]
 
 # STEP 3: The Split
-# We split the data into four pieces:
-# - train_X, train_y: These are used to "teach" the model.
-# - val_X, val_y: These are the "unseen" houses used to "test" the model.
-# 'test_size=0.2' means we hide 20% of the data for testing.
 train_X, val_X, train_y, val_y = train_test_split(X, y, random_state=0, test_size=0.2)
 
-# STEP 4: Train (Fit) the model ONLY on the training data
-melbourne_model = DecisionTreeRegressor(random_state=1)
-melbourne_model.fit(train_X, train_y)
+# --- NEW LOGIC: Comparing Tree Depths ---
 
-# STEP 5: Predict on the validation data (houses the model hasn't seen)
-val_predictions = melbourne_model.predict(val_X)
+# This function helps us compare MAE across different tree sizes.
+# It encapsulates the entire model cycle: Define, Fit, Predict, and Calculate Error.
+def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
+    # max_leaf_nodes limits how many "leaves" the tree can have
+    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=0)
+    
+    # Fit the model using the training data
+    model.fit(train_X, train_y)
+    
+    # Predict using the validation (unseen) data
+    preds_val = model.predict(val_X)
+    
+    # Calculate the error
+    mae = mean_absolute_error(val_y, preds_val)
+    return(mae)
 
-# STEP 6: Calculate Error
-# Mean Absolute Error (MAE) tells us, on average, how far off our predictions are.
-# Error = |Actual Price - Predicted Price|
-mae = mean_absolute_error(val_y, val_predictions)
+# STEP 4: Compare different values for max_leaf_nodes
+# We test a very shallow tree (5) vs very deep trees (5000)
+candidate_max_leaf_nodes = [5, 50, 500, 5000]
 
-print("Predictions for first 5 unseen houses:")
-print(val_predictions[0:5])
-# OUTPUT: [ 890000.  497000.  935000. 1185000.  812000.]
+print("MAE Results for different tree depths:")
+for max_leaf_nodes in candidate_max_leaf_nodes:
+    my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
+    print(f"Max leaf nodes: {max_leaf_nodes}  \t Mean Absolute Error: {int(my_mae)}")
 
-print("\nActual prices for those houses:")
-print(val_y.head().tolist())
-# OUTPUT: [805000.0, 505000.0, 810000.0, 1200000.0, 1020000.0] 
-# NOTICE: They no longer match perfectly!
+# OUTPUT:
+# Max leaf nodes: 5  	 Mean Absolute Error: 347380  <-- UNDERFITTING (Too simple)
+# Max leaf nodes: 50  	 Mean Absolute Error: 258171
+# Max leaf nodes: 500  	 Mean Absolute Error: 243495  <-- THE SWEET SPOT (Best performance)
+# Max leaf nodes: 5000  	 Mean Absolute Error: 255575  <-- OVERFITTING (Too complex/noisy)
 
-print(f"\nMean Absolute Error: ${mae:,.2f}")
-# OUTPUT: Mean Absolute Error: $273,121.72
+# STEP 5: Identify the best tree size
+# Based on the output above, 500 is the best value because it has the lowest MAE.
+best_tree_size = 500
+
+# STEP 6: Final Model
+# Now that we know the best tree size, we build the final model using ALL data.
+final_model = DecisionTreeRegressor(max_leaf_nodes=best_tree_size, random_state=1)
+final_model.fit(X, y)
 ```
